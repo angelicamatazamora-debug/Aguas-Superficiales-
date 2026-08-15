@@ -159,7 +159,7 @@ st.markdown("### Favor ingresar los parámetros de la muestra para la generació
 st.divider()
 
 # URL de la API
-API_URL = "http://localhost:8000/predict"
+API_URL = "https://aguas-api-55ij.onrender.com/predict"
 
 # Estructuración del Formulario 
 # Crear 3 columnas para la introducción de los datos para la predicción.
