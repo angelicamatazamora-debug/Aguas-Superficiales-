@@ -131,7 +131,7 @@ st.markdown("""
 # Cargar el modelo y el encoder (se ejecuta UNA SOLA VEZ)
 @st.cache_resource
 def cargar_modelo():
-    modelo = joblib.load("models/modelo_semaforo_agua.pkl")
+    modelo = joblib.load("models/modelo_semaforo_agua.pkl") #Modelo
     encoder = joblib.load("models/label_encoder_semaforo.pkl")
     return modelo, encoder
 
