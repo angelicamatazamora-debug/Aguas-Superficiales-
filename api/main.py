@@ -36,8 +36,8 @@ app = FastAPI(
 #Carga del modelo
 
 try:
-    modelo = joblib.load("/Users/hanjeannettezamora/Desktop/Calidad del Agua/Modelos/modelo_semaforo_agua.pkl") #Ruta al modelo entrenado
-    encoder = joblib.load("/Users/hanjeannettezamora/Desktop/Calidad del Agua/Modelos/label_encoder_semaforo.pkl") 
+    modelo = joblib.load("/Users/hanjeannettezamora/Desktop/Calidad del Agua/models/modelo_semaforo_agua.pkl") #Ruta al modelo entrenado
+    encoder = joblib.load("/Users/hanjeannettezamora/Desktop/Calidad del Agua/models/label_encoder_semaforo.pkl") 
     print("Modelo cargado correctamente") # Si se carga correctamente se hace una notificación.
 except Exception as e:
     print(f"Error al cargar el modelo: {e}") # Notificación de error de carga.
@@ -48,6 +48,11 @@ except Exception as e:
 @app.get("/")
 def inicio():
     return {"mensaje": "Calidad de Aguas Superficiales. Usa /predict para hacer predicciones"}
+
+# Endpoint para UptimeRobot (health check)
+@app.get("/health")
+def health_check():
+    return {"status": "ok", "message": "API funcionando correctamente"}
 
 # Endpoint de Prediccción
 
