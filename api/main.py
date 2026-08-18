@@ -5,6 +5,7 @@ from pydantic import BaseModel #Define los datos que usa la API
 import joblib #Permite cargar el modelo
 import pandas as pd 
 import uvicorn # Permite ejecutar la FastAPI
+import os
 
 # Definir los datos que se van a recibir
 # Creación de una clase (Los datos y su categorización. Se utilizaran cuando se haga una predicción por el usuario.)
@@ -34,14 +35,17 @@ app = FastAPI(
 )
 
 #Carga del modelo
-
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 try:
-    modelo = joblib.load("/Users/hanjeannettezamora/Desktop/Calidad del Agua/models/modelo_semaforo_agua.pkl") #Ruta al modelo entrenado
-    encoder = joblib.load("/Users/hanjeannettezamora/Desktop/Calidad del Agua/models/label_encoder_semaforo.pkl") 
-    print("Modelo cargado correctamente") # Si se carga correctamente se hace una notificación.
+    ruta_modelo = os.path.join(base_dir, "models", "modelo_semaforo_agua.pkl")
+    ruta_encoder = os.path.join(base_dir, "models", "label_encoder_semaforo.pkl")
+    
+    modelo = joblib.load(ruta_modelo)
+    encoder = joblib.load(ruta_encoder)
+    print("Modelo cargado correctamente")
 except Exception as e:
-    print(f"Error al cargar el modelo: {e}") # Notificación de error de carga.
-    modelo = None # Si el modelo no carga correctamente se dejan como none.
+    print(f"Error al cargar el modelo: {e}")
+    modelo = None
     encoder = None
 
 #Endpoint Bienvenida
