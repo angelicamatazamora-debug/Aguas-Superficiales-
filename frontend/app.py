@@ -45,11 +45,10 @@ st.markdown("""
         margin: 10px 0 20px 0;
     }
     .intro-box p {
-        margin: 1;
-        font-size: 25;
-        px;
-        color: #333;
-        line-height: 1.6;
+    margin: 0;
+    font-size: 15px;
+    color: #333;
+    line-height: 1.6;
     }
     .intro-box strong {
         color: #004466;
@@ -159,7 +158,7 @@ st.markdown("### Favor ingresar los parámetros de la muestra para la generació
 st.divider()
 
 # URL de la API
-API_URL = "https://aguas-api-55ij.onrender.com/predict"
+API_URL = "http://localhost:8000/predict"
 
 # Estructuración del Formulario 
 # Crear 3 columnas para la introducción de los datos para la predicción.
