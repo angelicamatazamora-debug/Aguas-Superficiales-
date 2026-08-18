@@ -358,7 +358,7 @@ if boton:
     
     with st.spinner("Consultando modelo de Machine Learning..."):
         try:
-            respuesta = requests.post(API_URL, json=datos, timeout=10)
+            respuesta = requests.post(API_URL, json=datos, timeout=30)
             
             if respuesta.status_code == 200:
                 resultado = respuesta.json()
